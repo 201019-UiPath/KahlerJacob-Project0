@@ -16,13 +16,35 @@ namespace ProjectZeroUI
                     {
                         case "0":
                             //Call the CustomerLogin
-                            
-                            CustLogin.start();
+                            ILogIn customer = new CustLogin();
+                            customer.GetUserName();
+                            customer.GetUserPin();
+                            int id = customer.CheckLogin();
                             break;
                         case "1":
                             
                             //Call managerLogin
-                            ManagerLogin.start();
+                            
+                            ILogIn manager = new ManagerLogin();
+                            manager.GetUserName();
+                            manager.GetUserPin();
+                            int id = manager.CheckLogin();
+                            while (id == 0)
+                                {
+                                    Console.WriteLine("Login Error!  User and Pin did not match!\n [0] - Try Again\n[1] - Go Back");
+                                    string userInput;
+                                    Console.ReadLine(userInput);
+
+                                    switch(userInput)
+                                    {
+                                        case "0":
+                                            manager.GetUserName();
+                                            manager.GetUserPin();
+                                            id = manager.CheckLogin();
+                                    }
+                        
+                                }
+                           
                             break;
                         case "2":
                             Console.WriteLine("Thank you for visiting!");

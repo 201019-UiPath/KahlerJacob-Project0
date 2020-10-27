@@ -1,6 +1,6 @@
 namespace ProjectDB.Models
 {
-    public class Manager
+    public class Manager : Person
     {
         
     }

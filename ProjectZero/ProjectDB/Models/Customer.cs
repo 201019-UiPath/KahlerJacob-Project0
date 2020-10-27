@@ -1,6 +1,6 @@
 namespace ProjectDB.Models
 {
-    public class Customer
+    public class Customer : Person
     {
         
     }
