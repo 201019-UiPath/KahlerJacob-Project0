@@ -6,11 +6,10 @@ namespace ProjectZeroUI
     {
         static void Main(string[] args)
         {
+            
             IMenu main = new MainMenu();
             main.start();
-            string userInput;
-            Console.Readline(userInput);
-
+            
         }
 
     }

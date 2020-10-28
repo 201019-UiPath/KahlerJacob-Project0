@@ -5,27 +5,33 @@ namespace ProjectZeroUI
         string userName;
         string userPin;
 
-        public void GetUserName(){
-            Console.WriteLine("Enter your Customer User Name");
-            Console.ReadLine(userName);
+        public string GetUserName(){
+            System.Console.WriteLine("Enter your Customer User Name");
+            userName = System.Console.ReadLine();
+            return userName;
             
 
         }
 
-        public void GetUserPin(){
-            Console.WriteLine("Enter your Pin");
-            Console.ReadLine(userPin);
+        public string GetUserPin(){
+            System.Console.WriteLine("Enter your Pin");
+            userPin = System.Console.ReadLine();
+            return userPin;
 
 
         }
 
-        public int CheckLogin(string user, string pin){
-
-            //open file for login
+        public int CheckLogin(string name, string pin)
+        {
+            int id = 0;
+            string IncName = name;
+            string IncPin = pin;
+            //opend for login
             //check table for user
             //check that user.pin is same
             //return the user.id
             //if not found return 0
+            return id;
         }
 
 

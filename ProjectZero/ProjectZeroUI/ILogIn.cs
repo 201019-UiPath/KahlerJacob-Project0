@@ -2,8 +2,9 @@ namespace ProjectZeroUI
 {
     public interface ILogIn
     {
-         void GetUserName();
-         void GetUserPin();
-         void CheckLogin();
+       
+         string GetUserName();
+         string GetUserPin();
+         int CheckLogin(string name,string pin);
     }
 }

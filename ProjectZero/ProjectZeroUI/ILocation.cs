@@ -1,6 +1,6 @@
 namespace ProjectZeroUI
 {
-    public interface LoginMenu
+    public interface ILocation
     {
          
     }
