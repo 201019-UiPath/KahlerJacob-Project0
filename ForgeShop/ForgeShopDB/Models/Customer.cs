@@ -14,5 +14,7 @@ namespace ForgeShopDB.Models
         public string state{get;set;}
         public string zipCode{get;set;}
 
+        
+
     }
 }

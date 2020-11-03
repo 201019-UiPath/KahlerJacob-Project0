@@ -48,6 +48,40 @@ namespace ForgeShopDB.Entities
             };
         }
 
+        public Models.Inventory ParseInventory(Inventory inventory)
+        {
+            return new Models.Inventory()
+            {
+                id = inventory.Id,
+                storeId = inventory.Storeid,
+                ball = inventory.Ballhammer,
+                flat = inventory.Flathammer,
+                cross = inventory.Crosshammer,
+                apronblack = inventory.Apronblack,
+                apronbrown = inventory.Apronbrown,
+                anvilsmall = inventory.Anvilsmall,
+                anvilmed = inventory.Anvilmed,
+                anvillarge = inventory.Anvillarge,
+            };
+        }
+
+        public Entities.Inventory ParseInventory(Models.Inventory inventory)
+        {
+            return new Entities.Inventory()
+            {
+                Id = inventory.id,
+                Storeid = inventory.storeId,
+                Ballhammer = inventory.ball,
+                Flathammer = inventory.flat,
+                Crosshammer = inventory.cross,
+                Apronblack = inventory.apronblack,
+                Apronbrown = inventory.apronbrown,
+                Anvilsmall = inventory.anvilsmall,
+                Anvilmed = inventory.anvilmed,
+                Anvillarge = inventory.anvillarge
+            };
+        }
+
         public Models.Location ParseLocation(Location location)
         {
             return new Models.Location()
@@ -62,7 +96,9 @@ namespace ForgeShopDB.Entities
         {
             return new Entities.Location()
             {
-
+                Id = location.id,
+                Name = location.name,
+                Address = location.address
             };
         }
 

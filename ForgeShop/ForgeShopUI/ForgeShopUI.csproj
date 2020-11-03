@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-  <ProjectReference Include="..\ForgeDB\" />
-  <ProjectReference Include="..\ForgeShopDB\ForgeShopDB.csproj" />
+    <ProjectReference Include="..\ForgeShopDB\ForgeShopDB.csproj" />
+    <ProjectReference Include="..\ForgeShopLib\ForgeShopLib.csproj" />
   </ItemGroup>
 
 </Project>

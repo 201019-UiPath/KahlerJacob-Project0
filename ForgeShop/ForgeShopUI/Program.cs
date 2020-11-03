@@ -1,4 +1,7 @@
 ﻿using System;
+using ForgeShopLib;
+using ForgeShopDB.Entities;
+using ForgeShopDB;
 
 namespace ForgeShopUI
 {
@@ -6,7 +9,9 @@ namespace ForgeShopUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IMenu main = new MainMenu(new DBContext(), new DBMapper());
+            main.start();
+
         }
     }
 }
