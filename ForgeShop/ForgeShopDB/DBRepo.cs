@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ForgeShopDB
 {
-    public class DBRepo : ICustomerRepo
+    public class DBRepo : ICustomerRepo, ILocationRepo
     {
         private readonly DBContext context;
         private readonly IMapper mapper;
@@ -39,6 +39,11 @@ namespace ForgeShopDB
         public Models.Customer GetCustomerByUser(string user)
         {
             throw new System.NotImplementedException();
+        }
+
+        public Models.Location GetLocationById(int id)
+        {
+            return (ForgeShopDB.Models.Location) context.Location.Where(x = x.Storeid == id);
         }
     }
 }

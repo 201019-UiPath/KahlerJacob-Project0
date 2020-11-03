@@ -6,6 +6,7 @@ namespace ForgeShopUI
     public class ExistingCustomerMenu 
     {
         private BrowseInventoryMenu Browse;
+        public Cart cart;
         public void start(int userID)
         {   
             string userChoice;
@@ -19,16 +20,16 @@ namespace ForgeShopUI
                 {
 
                     case "0":
-                        Browse.start(1, userID);
+                        Browse.start(1, userID, cart);
                         break;
                     case "1":
-                        Browse.start(2, userID);
+                        Browse.start(2, userID, cart);
                         break;
                     case "2":
-                        Browse.start(3, userID);
+                        Browse.start(3, userID, cart);
                         break;
                     case "3":
-                        Browse.start(4, userID);
+                        Browse.start(4, userID, cart);
                         break;
 
                     default:
