@@ -13,6 +13,8 @@ namespace ForgeShopUI
         private NewCustomerMenu NewMenu;
         private ExistingCustomerMenu ExistingCustomer;
         private ManagerMenu Managers;
+        
+        private int TemporaryCustomer = 1;
 
         public MainMenu(DBContext context, IMapper mapper)
         {
@@ -32,17 +34,17 @@ namespace ForgeShopUI
                         break;
                     case "1":
                         //call the Existing Customer menu;
-                        ExistingCustomer.start();
+                        ExistingCustomer.start(TemporaryCustomer);
                         break;
                     case "2":
                         //Call the Manager Menu
                         Managers.start();
                         break;
                     case "3":
-                        Console.WriteLine("Goodbye Friend");
+                        Console.WriteLine("Forge On!");
                         break;
                     default:
-                    //call the invalid message
+                        Console.WriteLine("Invalid Entry - Try again");
                     break;
                 }
 
