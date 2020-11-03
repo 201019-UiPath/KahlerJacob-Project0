@@ -1,35 +1,54 @@
-using System;
+using ForgeShopDB;
 using ForgeShopDB.Models;
+using System;
+using ForgeShopLib;
+using ForgeShopDB.Entities;
 
 namespace ForgeShopUI
 {
+    
     public class ExistingCustomerMenu 
     {
-        private BrowseInventoryMenu Browse;
+        BrowseInventoryMenu Browse ;
         public Cart cart;
+        private ICustomerRepo repo;
+
+        public ExistingCustomerMenu(DBContext context, IMapper mapper)
+        {
+            this.Browse = new BrowseInventoryMenu(new DBRepo(context,mapper));
+           // this.ExistingCustomer = new ExistingCustomerMenu(new DBRepo(context,mapper));
+        }
+        public ExistingCustomerMenu(ICustomerRepo repo)
+        {
+            this.repo = repo;
+        }
         public void start(int userID)
         {   
-            string userChoice;
+            string userInput;
             do{
 
                 
                 Console.WriteLine("Which Store would you like to browse?\n [0] North\n [1] South\n [2] East\n [3] West\n [4] Exit");
-                userChoice = Console.ReadLine();
+                userInput = Console.ReadLine();
 
-                switch(userChoice)
+                switch(userInput)
                 {
 
                     case "0":
-                        Browse.start(1, userID, cart);
+                        int table = 1;
+                        Browse.start(table, userID);
                         break;
                     case "1":
-                        Browse.start(2, userID, cart);
+                        int table2 = 2;
+                        Browse.start(table2, userID);
                         break;
                     case "2":
-                        Browse.start(3, userID, cart);
+                        int table3 = 3;
+                        Browse.start(table3, userID);
                         break;
                     case "3":
-                        Browse.start(4, userID, cart);
+                        int table4 = 4;
+                        Browse.start(table4, userID);
                         break;
 
                     default:
@@ -37,7 +56,7 @@ namespace ForgeShopUI
                         break;
                 }
 
-            }while(!userChoice.Equals("4"));
+            }while(!userInput.Equals("4"));
         }
     
     }

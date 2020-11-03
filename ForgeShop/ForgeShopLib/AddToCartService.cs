@@ -5,7 +5,7 @@ namespace ForgeShopLib
     public class AddToCartService
     {
 
-        public void AddToCart(int storeID, int custID, Inventory inventory, Cart cart, int Qnty, int ProductID)
+        public void AddToCart(int storeID, int custID, Inventory inventory, int Qnty, int ProductID)
 
         {
             //will check the Qnty against the amount in the Inventory table referenced by the StoreID

@@ -9,8 +9,8 @@ namespace ForgeShopDB
 {
     public class DBRepo : ICustomerRepo, ILocationRepo, IInventoryRepo
     {
-        private readonly DBContext context;
-        private readonly IMapper mapper;
+        public DBContext context;
+        public IMapper mapper;
         public Models.Inventory GetInventorybyStoreID(int id)
         {
             return  (Models.Inventory) context.Inventory.Where(x => x.Storeid == id);

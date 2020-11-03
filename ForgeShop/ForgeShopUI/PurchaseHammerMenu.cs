@@ -6,7 +6,7 @@ namespace ForgeShopUI
 {
     public class PurchaseHammerMenu
     {
-        public void PurchaseHammer(int storeID, int custID, Inventory inventory, Cart cart)
+        public void PurchaseHammer(int storeID, int custID, Inventory inventory)
         {
             string prodChoice;
             string Quantity;
@@ -35,7 +35,7 @@ namespace ForgeShopUI
                         Console.WriteLine("The number is way too large");
                     }
                     AddToCartService AddCart = new AddToCartService();
-                    AddCart.AddToCart(storeID, custID, inventory, cart, NumQty, 1);
+                    AddCart.AddToCart(storeID, custID, inventory, NumQty, 1);
 
 
                 break;

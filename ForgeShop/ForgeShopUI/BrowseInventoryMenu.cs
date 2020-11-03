@@ -8,30 +8,50 @@ using ForgeShopDB;
 namespace ForgeShopUI
 {
     public class BrowseInventoryMenu
-    {   
+    { 
+        public ICustomerRepo repo;
+/*
+        public BrowseInventoryMenu(DBContext context, IMapper mapper)
+        {
+            this.Browse = new BrowseInventoryMenu(new DBRepo(context,mapper));
+           // this.ExistingCustomer = new ExistingCustomerMenu(new DBRepo(context,mapper));
+        }*/
+
+         public BrowseInventoryMenu(ICustomerRepo repo)
+        {
+            this.repo = repo;
+        }         
         
-        public void start(int storeID, int userID, Cart cart)
+        public void start(int storeID, int userID)
         {   
             IMenu main = new MainMenu(new DBContext(), new DBMapper());
             ForgeShopDB.Models.Inventory inventory;
+
+            //These are Product Holders
             Product prod1;
             Product prod2;
             Product prod3;
 
+            //These allow me to Call DB Repo to set local variables
             GetLocationService locate = new GetLocationService();
             GetCustomerService findCust = new GetCustomerService();
             GetInventoryService findInv = new GetInventoryService();
             GetProductService getProd = new GetProductService();
 
+            //used to pass model objects
             ForgeShopDB.Models.Customer cust;
             ForgeShopDB.Models.Location locale;
             
-            inventory = findInv.GetInventory(storeID);//inventory = getInventory(storeID);
+            // fills the local models with DB Data
+            inventory = findInv.GetInventory(storeID);
             cust = findCust.GetCustomer(userID);
             locale = locate.GetLocation(storeID);
+
+            
             Console.WriteLine($"Welcome to the {locale.name} Location, {cust.fName} {cust.lName}");
             string userChoice;
             string prodChoice;
+            //Loop for menu
             do{
 
                 Console.WriteLine("Choose an Item Category\n [0] Hammers\n [1] Aprons\n [2] Anvils\n [3] Exit");
@@ -40,10 +60,11 @@ namespace ForgeShopUI
                 switch(userChoice)
                 {
                     case "0":
+                        //sets the product holders Keyed to the Products table
                         prod1 = getProd.GetProduct(1);
                         prod2 = getProd.GetProduct(2);
                         prod3 = getProd.GetProduct(3);
-
+                        //Displays the Hammer Selction Name, Price, Description, quantity
                         Console.WriteLine($"Hammers\n {prod1.name} - ${prod1.price} - {prod1.description} - {inventory.ball} - In Stock");
                         Console.WriteLine($" {prod2.name} - ${prod2.price} - {prod2.description} - {inventory.cross} - In Stock");
                         Console.WriteLine($" {prod3.name} - ${prod3.price} - {prod3.description} - {inventory.flat} - In Stock");
@@ -84,7 +105,7 @@ namespace ForgeShopUI
                 switch(userChoice){
                     case "0":
                         PurchaseHammerMenu PurchaseHammer = new PurchaseHammerMenu();
-                        PurchaseHammer.PurchaseHammer(storeID, userID, inventory, cart);                        
+                        PurchaseHammer.PurchaseHammer(storeID, userID, inventory);                        
                         main.start();
                         break;
 
