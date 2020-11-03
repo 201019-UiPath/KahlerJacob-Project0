@@ -3,6 +3,7 @@ using ForgeShopDB.Models;
 using System.Collections.Generic;
 using ForgeShopLib;
 using ForgeShopDB.Entities;
+using ForgeShopDB;
 
 namespace ForgeShopUI
 {
@@ -17,12 +18,17 @@ namespace ForgeShopUI
             Product prod2;
             Product prod3;
 
+            GetLocationService locate = new GetLocationService();
+            GetCustomerService findCust = new GetCustomerService();
+            GetInventoryService findInv = new GetInventoryService();
+            GetProductService getProd = new GetProductService();
+
             ForgeShopDB.Models.Customer cust;
             ForgeShopDB.Models.Location locale;
             
-            //inventory = getInventory(storeID);
-            //cust = getCustomer(userID);
-            //locale = getLocation(storeID);
+            inventory = findInv.GetInventory(storeID);//inventory = getInventory(storeID);
+            cust = findCust.GetCustomer(userID);
+            locale = locate.GetLocation(storeID);
             Console.WriteLine($"Welcome to the {locale.name} Location, {cust.fName} {cust.lName}");
             string userChoice;
             string prodChoice;
@@ -34,9 +40,9 @@ namespace ForgeShopUI
                 switch(userChoice)
                 {
                     case "0":
-                        //prod1 = getProduct(1);
-                        //prod2 = getProduct(2);
-                        //prod3 = getProduct(3);
+                        prod1 = getProd.GetProduct(1);
+                        prod2 = getProd.GetProduct(2);
+                        prod3 = getProd.GetProduct(3);
 
                         Console.WriteLine($"Hammers\n {prod1.name} - ${prod1.price} - {prod1.description} - {inventory.ball} - In Stock");
                         Console.WriteLine($" {prod2.name} - ${prod2.price} - {prod2.description} - {inventory.cross} - In Stock");
@@ -44,17 +50,17 @@ namespace ForgeShopUI
                         break;
 
                     case "1":
-                        //prod1 = getProduct(4);
-                        //prod2 = getProduct(5);
+                        prod1 = getProd.GetProduct(4);
+                        prod2 = getProd.GetProduct(5);
 
                         Console.WriteLine($"Aprons\n {prod1.name} - ${prod1.price} - {prod1.description} - {inventory.apronbrown} - In Stock");
                         Console.WriteLine($" {prod2.name} - ${prod2.price} - {prod2.description} - {inventory.apronblack} - In Stock");
                         break;
 
                     case "2":
-                        //prod1 = getProduct(6);
-                        //prod2 = getProduct(7);
-                        //prod3 = getProduct(8);
+                        prod1 = getProd.GetProduct(6);
+                        prod2 = getProd.GetProduct(7);
+                        prod3 = getProd.GetProduct(8);
 
                         Console.WriteLine($"Anvils\n {prod1.name} - ${prod1.price} - {prod1.description} - {inventory.anvilsmall} - In Stock");
                         Console.WriteLine($" {prod2.name} - ${prod2.price} - {prod2.description} - {inventory.anvilmed} - In Stock");

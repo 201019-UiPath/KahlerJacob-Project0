@@ -1,12 +1,17 @@
+using System.Linq;
+using ForgeShopDB;
 using ForgeShopDB.Models;
 
 namespace ForgeShopLib
 {
     public class GetLocationService
+
     {
+
+        private ILocationRepo repo;
         public Location GetLocation(int id){
 
-            return location;
+            return repo.GetLocationById(id); 
         }
     }
 }

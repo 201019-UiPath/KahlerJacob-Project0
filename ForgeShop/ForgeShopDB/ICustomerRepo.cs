@@ -5,7 +5,7 @@ namespace ForgeShopDB
 {
     public interface ICustomerRepo
     {
-         Customer GetCustomerByUser(string user);
+         Customer GetCustomerByID(int id);
          Task<List<Order>> GetAllOrders(int id);
          Task<List<Customer>> GetAllCustomersAsync();
          void AddCustomerAsync(Customer customer);

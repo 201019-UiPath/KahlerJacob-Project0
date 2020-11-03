@@ -7,10 +7,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ForgeShopDB
 {
-    public class DBRepo : ICustomerRepo, ILocationRepo
+    public class DBRepo : ICustomerRepo, ILocationRepo, IInventoryRepo
     {
         private readonly DBContext context;
         private readonly IMapper mapper;
+        public Models.Inventory GetInventorybyStoreID(int id)
+        {
+            return  (Models.Inventory) context.Inventory.Where(x => x.Storeid == id);
+        }
+
+       
+    
+
+
 
         public DBRepo(DBContext context, IMapper mapper)
         {
@@ -36,14 +45,14 @@ namespace ForgeShopDB
             throw new System.NotImplementedException();
         }
 
-        public Models.Customer GetCustomerByUser(string user)
+        public Models.Customer GetCustomerByID(int id)
         {
-            throw new System.NotImplementedException();
+            return (Models.Customer) context.Customer.Where(x => x.Id == id);
         }
 
         public Models.Location GetLocationById(int id)
         {
-            return (ForgeShopDB.Models.Location) context.Location.Where(x = x.Storeid == id);
+            return  (Models.Location) context.Location.Where(x => x.Id == id);
         }
     }
 }
